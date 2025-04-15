@@ -8,6 +8,7 @@ faker = "*"
 django = "==4.1"
 django-jet-reboot = "*"
 gunicorn = "*"
+whitenoise = "*"
 
 [dev-packages]
 
