@@ -26,7 +26,7 @@ class EmployeeCreationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'role', 'department', 'manager', 'hire_date']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'role', 'department', 'manager', 'hire_date']
 
     def clean_email(self):
         email = self.cleaned_data['email']

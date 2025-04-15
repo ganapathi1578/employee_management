@@ -7,6 +7,19 @@ from .forms import EmployeeProfileForm, HiringForm, EmployeeCreationForm
 def home(request):
     return render(request, 'core/home.html')
 
+def register_view(request):
+    if request.method == 'POST':
+        form = EmployeeCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account created successfully! You can now log in.')
+            return redirect('login')  # Make sure 'login' is in your `urls.py` or update to your actual login path name
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = EmployeeCreationForm()
+    return render(request, 'core/register.html', {'form': form})
+
 @login_required
 def profile(request):
     employee = request.user.employee

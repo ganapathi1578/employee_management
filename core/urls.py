@@ -21,4 +21,5 @@ urlpatterns = [
     path('hiring/<int:pk>/edit/', views.hiring_update, name='hiring_update'),
     path('hiring/<int:hiring_id>/onboard/', views.onboard_employee, name='onboard_employee'),
     path('employee/add/', views.add_employee, name='add_employee'),
+    path('register/', views.register_view, name='register'),
 ]
