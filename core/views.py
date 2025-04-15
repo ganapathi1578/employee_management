@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .models import Employee, EmployeeProfile, Department, Hiring
 from .forms import EmployeeProfileForm, HiringForm, EmployeeCreationForm
+from django.contrib import messages
 
 def home(request):
     return render(request, 'core/home.html')
