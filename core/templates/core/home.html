@@ -1,0 +1,10 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Welcome to Employee Management System</h1>
+{% if user.is_authenticated %}
+    <p>Hello, {{ user.get_full_name }}.</p>
+{% else %}
+    <p>Please log in to access the system.</p>
+{% endif %}
+{% endblock %}

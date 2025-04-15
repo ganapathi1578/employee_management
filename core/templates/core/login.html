@@ -1,0 +1,101 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="login-container">
+  <div class="login-card">
+    <h2 class="login-title">Login to EmployeeHub</h2>
+    <form method="post">
+      {% csrf_token %}
+      <p>
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </p>
+      <p>
+        {{ form.password.label_tag }}
+        {{ form.password }}
+      </p>
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+    <p><a href="{% url 'core:password_reset' %}" class="btn-register">Forgot password?</a></p>
+    <!-- Register link styled as a button -->
+    <a href="{% url 'core:register' %}" class="btn-register">Register</a>
+  </div>
+</div>
+
+<style>
+
+  .form input {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  /* Container to center the login card */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+  }
+
+  /* Card styling */
+  .login-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  /* Title styling */
+  .login-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.8rem;
+  }
+
+  /* Button styling */
+  .btn-login,
+  .btn-register {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    border: none;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-login:hover,
+  .btn-register:hover {
+    background: linear-gradient(135deg, #5b0eab, #1f68d0);
+  }
+
+  /* Optional styling for form inputs if you want a more refined look */
+  form p {
+    margin-bottom: 15px;
+  }
+
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+</style>
+{% endblock %}

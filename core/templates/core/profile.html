@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Profile</h2>
+<p>Name: {{ employee.user.get_full_name }}</p>
+<p>Email: {{ employee.user.email }}</p>
+<p>Role: {{ employee.role }}</p>
+<p>Department: {{ employee.department }}</p>
+<p>Hire Date: {{ employee.hire_date }}</p>
+<h3>Update Your Profile</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

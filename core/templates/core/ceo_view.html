@@ -1,0 +1,98 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="dashboard">
+  <h2 class="dashboard-title">CEO Dashboard</h2>
+
+  <!-- Dashboard Stats Section -->
+  <div class="dashboard-stats">
+    <div class="card stat-card">
+      <h3>Total Employees</h3>
+      <p class="stat-value">{{ employee_count }}</p>
+    </div>
+  </div>
+
+  <!-- Departments Section -->
+  <div class="dashboard-section departments-section">
+    <h3>Departments</h3>
+    <ul class="card-list departments-list">
+      {% for dept in departments %}
+        <li class="card department-card">
+          <h4 class="card-title">{{ dept.name }}</h4>
+          <p class="card-text">{{ dept.employee_set.count }} employees</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- Recent Hires Section -->
+  <div class="dashboard-section recent-hires-section">
+    <h3>Recent Hires</h3>
+    <ul class="card-list hires-list">
+      {% for employee in recent_hires %}
+        <li class="card hire-card">
+          <p class="card-title"><strong>{{ employee.user.get_full_name }}</strong></p>
+          <p class="card-text">Hired on: {{ employee.hire_date }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- Optional inline styles for demonstration purposes -->
+<style>
+  .dashboard {
+    padding: 20px;
+    background-color: #fdfdfd;
+  }
+  .dashboard-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+  .dashboard-stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  .stat-value {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  .dashboard-section {
+    margin-bottom: 40px;
+  }
+  .card-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    padding: 15px;
+    flex: 1 1 250px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .card-title {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  .card-text {
+    color: #555;
+  }
+</style>
+{% endblock %}

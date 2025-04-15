@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Hiring Records</h2>
+<a href="{% url 'core:hiring_create' %}">Add New Candidate</a>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hiring in hirings %}
+        <tr>
+            <td>{{ hiring.first_name }} {{ hiring.last_name }}</td>
+            <td>{{ hiring.email }}</td>
+            <td>{{ hiring.get_status_display }}</td>
+            <td>
+                <a href="{% url 'core:hiring_update' hiring.pk %}">Edit</a>
+                {% if hiring.status == 'hired' and not hiring.employee %}
+                    <a href="{% url 'core:onboard_employee' hiring.pk %}">Onboard</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

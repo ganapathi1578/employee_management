@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Onboard Employee{% if hiring %} for {{ hiring.first_name }} {{ hiring.last_name }}{% endif %}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Employee</button>
+</form>
+{% endblock %}
